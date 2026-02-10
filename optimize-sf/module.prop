@@ -1,0 +1,6 @@
+id=doge_hypersimple_sf_optimize
+name=Optimize SurfaceFlinger
+version=1.0 (1)
+versionCode=1
+author=mrdoge0
+description=A hyper simple module to do some SurfaceFlinger optimizations.
