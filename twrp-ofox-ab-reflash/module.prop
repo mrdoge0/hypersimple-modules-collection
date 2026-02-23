@@ -2,5 +2,5 @@ id=doge_hypersimple_twrp_survive
 name=TWRP/OrangeFox OTA Survival
 version=1.0 (1)
 versionCode=1
-author=mrdoge0
-description=Click Action to reflash your custom recovery to the updated slot. If you use Magisk, run Action of this before installing Magisk to the updated slot. Also, thanks osm0sis for the script itself.
+author=mrdoge0 (Special thanks to osm0sis for the script itself)
+description=Click Action to reflash your custom recovery to the updated slot. If you use Magisk, run Action of this before installing Magisk to the updated slot.
