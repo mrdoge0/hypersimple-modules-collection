@@ -1,0 +1,7 @@
+id=unspoof_my_lineage
+name=Unspoof my LineageOS
+version=Hyper Simple Modules Collection v2 (11)
+versionCode=11
+author=mrdoge0
+description=A hyper simple module to unspoof the fingerprints and descriptions for LineageOS builds. IDK anybody would want this, but...
+updateJson=https://raw.githubusercontent.com/mrdoge0/hypersimple-modules-collection/refs/heads/main/UPDATES/unspoof-my-lineage.json
