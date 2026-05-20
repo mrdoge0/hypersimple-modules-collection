@@ -4,3 +4,4 @@ version=Hyper Simple Modules Collection v2 (1)
 versionCode=1
 author=mrdoge0
 description=A hyper simple daemon module to keep your Android device open via basically banning the installation of Android Developer Verifier out of your device.
+updateJson=https://raw.githubusercontent.com/mrdoge0/hypersimple-modules-collection/refs/heads/main/UPDATES/apk-liberator.json
