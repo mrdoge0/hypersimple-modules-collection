@@ -3,5 +3,5 @@ name=Optimize SurfaceFlinger
 version=Hyper Simple Modules Collection v2 (2)
 versionCode=2
 author=mrdoge0
-description=A hyper simple module to do some SurfaceFlinger optimizations.
+description=A hyper simple module to do some SurfaceFlinger optimizations. Doesn't do that much change, it more is like placebo effect, but nice to have.
 updateJson=https://raw.githubusercontent.com/mrdoge0/hypersimple-modules-collection/refs/heads/main/UPDATES/optimize-sf.json
