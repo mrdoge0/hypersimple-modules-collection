@@ -1,0 +1,7 @@
+id=fix_gsi_identity_crisis
+name=Fix GSI Identity Crisis
+version=Hyper Simple Modules Collection v2 (14)
+versionCode=14
+author=mrdoge0
+description=A Hyper simple module to fix device name in GSIs. You'll see your actual device model instead of things like 'TrebleDroid vanilla' or 'AOSP on ARM64'.
+updateJson=https://raw.githubusercontent.com/mrdoge0/hypersimple-modules-collection/refs/heads/main/UPDATES/fix-gsi-identity-crisis.json
