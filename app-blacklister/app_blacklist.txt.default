@@ -1,0 +1,21 @@
+## 
+## BLACKLISTED APPLICATIONS (APP BLACKLISTER)
+## 
+
+# This is the list that the App Blacklister module reads and applies.
+# Usage:
+# Write down the package IDs of apps that you want to blacklist, without any additions.
+#   Eg. "com.example.example_app"
+# Adding spaces and/or unnecessary characters will most likely result w/ the rule not working. You can do comments though.
+#   Eg. "com.example.example_app " will not work, neither will "com.example.example_app;", "# com.example.example_app" is just a comment.
+# You can add wildcards to either the left, the right or to any place if you want to blacklist a whole pattern rather than just one package.
+#   Eg. "com.google.*" to do a FULLY HARDCORE de-Google (btw NEVER do that on any ROM that uses the Google Mainline components)
+
+# Default rule: Android Developer Verifier
+com.google.android.verifier
+
+# Default rule: ironSource's ad service packages AppCloud (which is usually seen in some Samsung and Motorola devices) and AppServices (which is usually seen in some Nothing devices)
+#   (also a showcase for the wildcard pattern function)
+com.aura.oobe.*
+
+# Do YOUR magic of wiping FSA bloatware.
