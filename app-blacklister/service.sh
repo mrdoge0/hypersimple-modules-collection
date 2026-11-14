@@ -1,18 +1,24 @@
 #!/system/bin/sh
 # sorry goolag, having to write this hurts me worse than this existing hurting you
+# App Blacklister: Ban the installation of FSA bloatware that just keeps reinstalling themselves after you remove them.
+#   A hyper simple daemon module to blacklist specific apps that you choose by writing their package IDs to "/data/adb/app_blacklist.txt".
+#   It also tries to keep your Android device open and ironSource-free, via having Android Developer Verifier, 
+#   and ironSource's over-permissioned ad service (and potentially Israeli spyware) apps AppCloud (that is usually seen in Samsung devices)
+#   and AppServices (that is usually seen in Nothing devices) to the default blacklist.
+#   Usage: "echo com.whatever.the.fuck.you.want.to.delete >> /data/adb/app_blacklist.txt"
 
 # Log funcs
 mLogI() {
   echo "[I] ${1}"
-  log -p i -t 'doge_hypersimple_apk_liberator' "${1}"
+  log -p i -t 'App Blacklister by mrdoge0' "${1}"
 }
 mLogW() {
   echo "[W] ${1}"
-  log -p w -t 'doge_hypersimple_apk_liberator' "${1}"
+  log -p w -t 'App Blacklister by mrdoge0' "${1}"
 }
 mLogE() {
   echo "[E] ${1}"
-  log -p e -t 'doge_hypersimple_apk_liberator' "${1}"
+  log -p e -t 'App Blacklister by mrdoge0' "${1}"
 }
 
 # Wait for phone to boot up, get out of BFU and get a bit more stable (logic stolen directly from Reveny's VBMeta Fixer, credits for reveny :D)
