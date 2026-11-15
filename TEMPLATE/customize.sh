@@ -1,5 +1,4 @@
 MINAPI=23
-MAXAPI=37
 
 REPLACE="
 "
