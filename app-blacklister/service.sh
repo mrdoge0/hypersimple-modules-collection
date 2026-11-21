@@ -7,6 +7,9 @@
 #   and AppServices (that is usually seen in Nothing devices) to the default blacklist.
 #   Usage: "echo com.whatever.the.fuck.you.want.to.delete >> /data/adb/app_blacklist.txt"
 
+# Set MODDIR
+MODDIR=${0%/*}
+
 # Log funcs
 mLogI() {
   echo "[I] ${1}"
