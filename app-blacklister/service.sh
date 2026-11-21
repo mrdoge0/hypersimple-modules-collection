@@ -50,24 +50,46 @@ LASTPKGLIST='ofc this is dummy :3'
 # your periodic function
 while true; do
   # get current pkg list
-  CURRPKGLIST="$(pm list packages)"
+  CURRPKGLIST="$(pm list packages --user $(am get-current-user))"
 
   # compare 'em
   if [ "${CURRPKGLIST}" != "${LASTPKGLIST}" ]; then
-    # check if the nwo shit that's dev verifier now exists or not
-    if echo "${CURRPKGLIST}" | grep 'package:com.google.android.verifier'; then
-      # ALLAH AKBAR!!!
-      pm uninstall --user 0 com.google.android.verifier
-      EXCD="${?}"
-      case ${EXCD} in
-        0) mLogI 'NWO fuckery wiped out successfully'; LASTPKGLIST="$(pm list packages)";;
-        *) mLogE "PM command failed with exit code ${EXCD}"; LASTPKGLIST="last uninstall fail with pm exit ${EXCD}";;
+    # Bootstrap some vars
+    EXCD='0'
+    
+    # Basic listing and santitisation of comments and junk w/ spaces
+    for TPKG in "$(cat '/data/adb/app_blacklist.txt' | grep -v '^#' | cut -d'#' -f1 | grep -v ' ')"; do
+      # If the target package is installed or not
+      if [ ! -z "$(echo "${CURRPKGLIST}" | grep "^package:${TPKG}$")" ]; then
+        # ALLAH AKBAR!!!
+        pm uninstall --user $(am get-current-user) "${TPKG}"
+        CURREX="${?}"
+
+        # Compare exit codes
+        case ${CURREX} in
+          0) true;;
+          *) case "${EXCD}" in
+               0) EXCD="${CURREX} (${TPKG})";;
+               *) EXCD="${EXCD}, ${CURREX} (${TPKG})";;
+             esac;;
+        esac
+      fi
+
+      # Update the LASTPKGLIST
+      case "${EXCD}" in
+        0)  # Actually update the lastpkglist
+            LASTPKGLIST="$(pm list packages --user $(am get-current-user))"
+            ;;
+        *)  # Report the fail
+            FAILSTR="failed with exit code(s): ${EXCD}"
+            mLogE "${FAILSTR}"
+            LASTPKGLIST="${FAILSTR}"
+            ;;
       esac
     else
-      # just update last list if shit is tame for now
-      mLogI 'target is not here for now'
+      # Update the LASTPKGLIST
       LASTPKGLIST="${CURRPKGLIST}"
-    fi
+    done
   fi
 
   # wait 30 secs
