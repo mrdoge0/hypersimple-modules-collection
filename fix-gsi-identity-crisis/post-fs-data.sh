@@ -20,12 +20,10 @@ if [ -f "${VENDORPROP}" ]; then
 
     # Do the props.
     if [ ! -z "${VENDORDEVICE}" ]; then
-        for PART in "" ".product" ".system" ".system_ext" ".bootimage"; do
-            resetprop -n ro.product${PART}.brand "${VENDORBRAND}"
-            resetprop -n ro.product${PART}.device "${VENDORDEVICE}"
-            resetprop -n ro.product${PART}.manufacturer "${VENDORMANUFACTURER}"
-            resetprop -n ro.product${PART}.model "${VENDORMODEL}"
-        done
+        resetprop -n ro.product.brand "${VENDORBRAND}"
+        resetprop -n ro.product.device "${VENDORDEVICE}"
+        resetprop -n ro.product.manufacturer "${VENDORMANUFACTURER}"
+        resetprop -n ro.product.model "${VENDORMODEL}"
     else
         log -p e -t Fix_GSI_Identity_Crisis "Operation FAILED"
         setprop ro.fix_gsi_identity_crisis.job_successful "0"
@@ -35,12 +33,7 @@ if [ -f "${VENDORPROP}" ]; then
     # Market name support - Separate from standard resetprops because some devices don't have marketname props.
     ODMMN=$(grep -E 'ro.product.odm.marketname=' "/odm/etc/build.prop" | cut -d'=' -f2)
     if [ ! -z ${ODMMN} ]; then
-        for PART in "" ".product" ".system" ".system_ext" ".bootimage"; do
-            resetprop -n ro.product${PART}.marketname "${ODMMN}"
-        done
-        for PART in "system_dlkm" "bootimage"; do
-            resetprop -n ro.product.${PART}.marketname "${VENDORDEVICE}"
-        done
+        resetprop -n ro.product.marketname "${ODMMN}"
     fi
 
     ## A new experimental feature - fixing fingerprints (usable for Play Integrity)
@@ -73,10 +66,8 @@ if [ -f "${VENDORPROP}" ]; then
     #                  "treble_arm64_bvS-userdebug 16 BP2A.250605.031.A3 OS2.0.215.0.WFGMIXM test-keys" (also my device in my personal settings at this module :D)
     TRUEFINGERPRINT="${VENDORBRAND}/${SYSTEMNAME}/${VENDORDEVICE}:${SYSTEMVER}/${SYSTEMID}/${SYSTEMINC}:${SYSTEMTYPE}/${SYSTEMTAGS}"
     TRUEDESC="${SYSTEMNAME}-${SYSTEMTYPE} ${SYSTEMVER} ${SYSTEMID} ${SYSTEMINC} ${SYSTEMTAGS}"
-    for PART in "" ".system" ".system_ext" ".product"; do
-        resetprop -n ro${PART}.build.fingerprint "${TRUEFINGERPRINT}"
-        resetprop -n ro${PART}.build.description "${TRUEDESC}"
-    done
+    resetprop -n ro.build.fingerprint "${TRUEFINGERPRINT}"
+    resetprop -n ro.build.description "${TRUEDESC}"
 
     ## True vendor fingerprint (sometimes they are spoofed)
     
