@@ -5,7 +5,8 @@ case "$(getprop ro.build.version.sdk)" in
   '10000'|'37'|'36')
     # Canary, Cinnamon Bun or Baklava
     # Directly eligible (even 16 QPR0)
-    ELIGIBLE='true';;
+    ELIGIBLE='true'
+    ;;
   '35')
     # Vanilla Ice Cream
     if [ -z "$(getprop ro.build.id | grep 'BP1A')" ]; then
@@ -16,10 +17,12 @@ case "$(getprop ro.build.version.sdk)" in
       # QPR2
       # Eligible but awfully incomplete
       ELIGIBLE='true'
-    fi;;
+    fi
+    ;;
   *)
     # Upside Down Cake or older
     ELIGIBLE='false'
+    ;;
 esac
 
 # That's the prop to enable Expressive on A16 QPR0 and fix the Permission Manager menus not being Expressive on LineageOS-based QPR1+.
