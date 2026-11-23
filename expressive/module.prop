@@ -1,7 +1,7 @@
 id=doge_hypersimple_expressive
 name=Enable M3 Expressive Design
-version=Hyper Simple Modules Collection v2 (2)
-versionCode=2
+version=Hyper Simple Modules Collection v2.1 (3)
+versionCode=3
 author=mrdoge0
 description=A hyper simple module to enable Material 3 Expressive on Android 16 QPR0, or fix some settings menus not being Expressive design on QPR1+.
 updateJson=https://raw.githubusercontent.com/mrdoge0/hypersimple-modules-collection/refs/heads/main/UPDATES/expressive.json
